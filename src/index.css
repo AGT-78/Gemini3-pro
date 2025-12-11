@@ -23,21 +23,21 @@
   }
 
   .dark {
-    --background: 210 30% 4%; /* Deep Black: #090C0F */
-    --foreground: 0 0% 98%;
-    --card: 210 25% 8%;
-    --card-foreground: 0 0% 98%;
-    --primary: 158 55% 47%; /* Jungle Green: #34B27B */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 210 20% 10%;
-    --muted-foreground: 0 0% 97%; /* Bright white for nav links: #F8F9FA */
-    --accent: 158 55% 47%; /* Jungle Green: #34B27B */
+    --background: 0 0% 4%; /* Deepest Dark: #0a0a0a */
+    --foreground: 220 43% 98%; /* Light: #f5f7fb */
+    --card: 225 10% 8%; /* Dark Gray: #121316 */
+    --card-foreground: 220 43% 98%; /* Light: #f5f7fb */
+    --primary: 143 47% 34%; /* Forest Green: #2e7d46 */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 225 10% 12%;
+    --secondary-foreground: 220 43% 98%;
+    --muted: 225 14% 80%; /* Muted Gray: #c7c9d1 */
+    --muted-foreground: 225 14% 80%; /* Muted Gray for secondary text: #c7c9d1 */
+    --accent: 143 47% 34%; /* Forest Green: #2e7d46 */
     --accent-foreground: 0 0% 100%;
-    --border: 210 20% 15%;
-    --input: 210 20% 12%;
-    --ring: 158 55% 47%; /* Jungle Green: #34B27B */
+    --border: 225 10% 15%;
+    --input: 225 10% 12%;
+    --ring: 143 47% 34%; /* Forest Green: #2e7d46 */
   }
 }
 
@@ -56,16 +56,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(210 30% 4%); /* Deep Black: #090C0F */
+  background: hsl(0 0% 4%); /* Deepest Dark: #0a0a0a */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(158 55% 47%); /* Jungle Green: #34B27B */
+  background: hsl(143 47% 34%); /* Forest Green: #2e7d46 */
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(158 55% 57%);
+  background: hsl(143 47% 44%);
 }
 
 /* Smooth scroll */
@@ -81,7 +81,7 @@ html {
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to top, rgba(52, 178, 123, 0.08) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(46, 125, 70, 0.08) 0%, transparent 100%);
   pointer-events: none;
   z-index: 40;
   opacity: 0;
