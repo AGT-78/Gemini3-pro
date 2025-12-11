@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 207 24% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 207 24% 10%;
+    --primary: 158 55% 47%; /* Jungle Green: #34B27B */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 158 55% 47%; /* Jungle Green: #34B27B */
+    --accent-foreground: 0 0% 100%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 158 55% 47%; /* Jungle Green: #34B27B */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 210 30% 4%; /* Deep Black: #090C0F */
+    --foreground: 0 0% 98%;
+    --card: 210 25% 8%;
+    --card-foreground: 0 0% 98%;
+    --primary: 158 55% 47%; /* Jungle Green: #34B27B */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 210 20% 10%;
+    --muted-foreground: 0 0% 97%; /* Bright white for nav links: #F8F9FA */
+    --accent: 158 55% 47%; /* Jungle Green: #34B27B */
+    --accent-foreground: 0 0% 100%;
+    --border: 210 20% 15%;
+    --input: 210 20% 12%;
+    --ring: 158 55% 47%; /* Jungle Green: #34B27B */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(210 30% 4%); /* Deep Black: #090C0F */
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(158 55% 47%); /* Jungle Green: #34B27B */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(158 55% 57%);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle gradient scroll effect - bottom viewport glow */
+.scroll-gradient-effect::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgba(52, 178, 123, 0.08) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.scroll-gradient-effect.scrolled::after {
+  opacity: 1;
+}
