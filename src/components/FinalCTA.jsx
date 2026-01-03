@@ -1,79 +1,63 @@
-import React from 'react'
-import { Button } from './ui/button'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import React from "react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 const FinalCTA = () => {
   const benefits = [
-    'Free 30-minute consultation',
-    'Custom automation strategy',
-    'ROI calculation included',
-    'No obligations or commitments',
-  ]
+    "Free 30-minute consultation",
+    "Custom automation strategy",
+    "ROI calculation included",
+    "No obligations or commitments",
+  ];
 
   return (
     <section className="relative py-32 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary/5"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Grid layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+          {/* LEFT: Text Content */}
+          <div className="space-y-8">
+            {/* Headline */}
+            <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+              Stop Managing Tasks,
+              <br />
+              <span className="text-primary">Start Scaling Your Business</span>
+            </h2>
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Main Content */}
-        <div className="space-y-8">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-            </span>
-            <span className="text-sm font-medium text-primary">Limited Availability</span>
-          </div>
+            {/* Description */}
+            <p className="text-lg text-white/80 max-w-xl">
+              Join hundreds of service businesses that have automated their way
+              to growth. Let’s discuss how we can transform your operations.
+            </p>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
-            Stop Managing Tasks,
-            <br />
-            <span className="text-primary">Start Scaling Your Business</span>
-          </h2>
+            {/* Benefits */}
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <span className="text-sm text-white">{benefit}</span>
+                </div>
+              ))}
+            </div>
 
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Join hundreds of service businesses that have automated their way to growth.
-            Let's discuss how we can transform your operations.
-          </p>
+            {/* CTA */}
+            <div>
+              <Button className="group px-8 h-12 text-base">
+                Start Your Automation Journey
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
 
-          {/* Benefits List */}
-          <div className="flex flex-wrap justify-center gap-6 py-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center space-x-2">
-                <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium text-white">{benefit}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="group text-lg px-12 h-16 shadow-2xl shadow-primary/30">
-              Start Your Automation Journey
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-
-          {/* Trust Signal */}
-          <p className="text-sm text-white/70 mt-8">
-            ⚡ Typical setup time: 2-4 weeks • 🔒 SOC 2 Compliant • ⭐ 4.9/5 Average Rating
-          </p>
-        </div>
-
-        {/* Visual Element - Image Placeholder */}
-        <div className="mt-16 image-placeholder h-64 bg-gradient-to-br from-card to-card/50 rounded-2xl border-2 border-primary/20 shadow-2xl shadow-primary/10 flex items-center justify-center">
-          <div className="text-center space-y-2">
-            <div className="text-primary text-sm font-semibold">Dashboard Preview</div>
-            <div className="text-white/60 text-xs">Automation Analytics & Insights</div>
+            {/* Trust line */}
+            <p className="text-sm text-white/60">
+              ⚡ Typical setup time: 2–4 weeks • 🔒 SOC 2 Compliant • ⭐ 4.9/5
+              Rating
+            </p>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default FinalCTA
-
+export default FinalCTA;

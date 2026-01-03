@@ -1,33 +1,80 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
 
-const Button = React.forwardRef(({ className, variant = "default", size = "default", ...props }, ref) => {
-  const baseStyles = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 backdrop-blur-sm"
-  
-  const variants = {
-    default: "bg-primary/90 text-primary-foreground hover:bg-primary shadow-lg shadow-primary/30 ring-1 ring-primary/40 border border-border hover:shadow-xl hover:shadow-primary/40 hover:ring-primary/60 hover:border-primary/80",
-    outline: "border-2 border-primary/80 text-primary hover:bg-primary/90 hover:text-primary-foreground hover:border-primary shadow-md shadow-primary/10",
-    ghost: "hover:bg-accent hover:text-accent-foreground",
-    link: "text-primary underline-offset-4 hover:underline",
+// simple class merge without extra libs
+function cx(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const Button = React.forwardRef(
+  (
+    {
+      className,
+      variant = "default",
+      size = "default",
+      type = "button",
+      ...props
+    },
+    ref
+  ) => {
+    const base =
+      "inline-flex items-center justify-center whitespace-nowrap font-medium tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background disabled:pointer-events-none disabled:opacity-50";
+
+    // ✅ Supabase-ish: surface depth (inset highlight) + soft colored shadow
+    const variants = {
+      default: `
+  rounded-md
+  bg-primary/20
+  text-white/95
+  border border-primary/50
+
+  shadow-[inset_0_1px_0_hsl(var(--primary)/0.45),_0_8px_24px_-10px_hsl(var(--primary)/0.45)]
+  hover:bg-primary/30
+  hover:border-primary/65
+  hover:shadow-[inset_0_1px_0_hsl(var(--primary)/0.6),_0_14px_36px_-14px_hsl(var(--primary)/0.6)]
+  hover:-translate-y-[1px]
+
+  active:bg-primary/25
+  active:translate-y-0
+
+  transition-all duration-200
+`,
+
+      // ✅ Supabase outline: minimal, crisp, low-noise
+      outline: `
+  rounded-md
+  bg-white/5
+  text-white/80
+  border border-white/15
+
+  hover:bg-white/10
+  hover:border-white/25
+  hover:text-white
+
+  transition-all duration-200
+`,
+
+      // optional
+      ghost: "rounded-md text-primary hover:bg-primary/10",
+      link: "text-primary underline-offset-4 hover:underline",
+    };
+
+    const sizes = {
+      default: "h-11 px-6 text-sm",
+      sm: "h-9 px-4 text-sm",
+      lg: "h-14 px-10 text-base",
+      icon: "h-10 w-10",
+    };
+
+    return (
+      <button
+        ref={ref}
+        type={type}
+        className={cx(base, variants[variant], sizes[size], className)}
+        {...props}
+      />
+    );
   }
-  
-  const sizes = {
-    default: "h-11 px-8 py-2",
-    sm: "h-9 rounded-md px-4",
-    lg: "h-14 rounded-md px-10 text-base",
-    icon: "h-10 w-10",
-  }
+);
 
-  return (
-    <button
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
-      ref={ref}
-      {...props}
-    />
-  )
-})
-
-Button.displayName = "Button"
-
-export { Button }
-
+Button.displayName = "Button";
+export { Button };

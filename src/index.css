@@ -2,86 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   THEME TOKENS
+========================= */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 207 24% 10%;
+
     --card: 0 0% 100%;
     --card-foreground: 207 24% 10%;
-    --primary: 158 55% 47%; /* Jungle Green: #34B27B */
+
+    --primary: 151 83% 40%;
     --primary-foreground: 0 0% 100%;
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 158 55% 47%; /* Jungle Green: #34B27B */
+
+    --accent: 151 83% 40%;
     --accent-foreground: 0 0% 100%;
+
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 158 55% 47%; /* Jungle Green: #34B27B */
+    --ring: 151 83% 40%;
+
     --radius: 0.5rem;
   }
 
+  /* =========================
+     DARK MODE (ACTIVE)
+  ========================= */
+
   .dark {
-    --background: 0 0% 4%; /* Deepest Dark: #0a0a0a */
-    --foreground: 220 43% 98%; /* Light: #f5f7fb */
-    --card: 225 10% 8%; /* Dark Gray: #121316 */
-    --card-foreground: 220 43% 98%; /* Light: #f5f7fb */
-    --primary: 143 47% 34%; /* Forest Green: #2e7d46 */
-    --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 225 10% 12%;
-    --secondary-foreground: 220 43% 98%;
-    --muted: 225 14% 80%; /* Muted Gray: #c7c9d1 */
-    --muted-foreground: 225 14% 80%; /* Muted Gray for secondary text: #c7c9d1 */
-    --accent: 143 47% 34%; /* Forest Green: #2e7d46 */
+    /* Backgrounds */
+    --background: 225 6% 6%; /* deep near-black */
+    --card: 225 7% 9%;
+    --border: 225 8% 14%;
+    --input: 225 8% 14%;
+
+    /* Text */
+    --foreground: 220 40% 96%;
+    --card-foreground: 220 40% 96%;
+    --muted: 225 6% 20%;
+    --muted-foreground: 225 8% 60%;
+
+    /* 🔥 Supabase Green */
+    --primary: 151 45% 63%; /* #72d19e */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary / subtle surfaces */
+    --secondary: 225 7% 12%;
+    --secondary-foreground: 220 40% 96%;
+
+    /* Accent (slightly darker green) */
+    --accent: 151 55% 45%;
     --accent-foreground: 0 0% 100%;
-    --border: 225 10% 15%;
-    --input: 225 10% 12%;
-    --ring: 143 47% 34%; /* Forest Green: #2e7d46 */
+
+    /* Focus ring */
+    --ring: 151 55% 53%;
   }
 }
+
+/* =========================
+   GLOBAL BASE STYLES
+========================= */
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* Custom scrollbar for dark theme */
+/* =========================
+   SCROLLBAR (NOW VARIABLE-DRIVEN)
+========================= */
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(0 0% 4%); /* Deepest Dark: #0a0a0a */
+  background: hsl(var(--background));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(143 47% 34%); /* Forest Green: #2e7d46 */
+  background: hsl(var(--primary));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(143 47% 44%);
+  background: hsl(var(--primary) / 0.85);
 }
 
-/* Smooth scroll */
+/* =========================
+   EFFECTS
+========================= */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Subtle gradient scroll effect - bottom viewport glow */
 .scroll-gradient-effect::after {
-  content: '';
+  content: "";
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to top, rgba(46, 125, 70, 0.08) 0%, transparent 100%);
+  background: linear-gradient(to top, hsl(var(--primary) / 0.08), transparent);
   pointer-events: none;
   z-index: 40;
   opacity: 0;

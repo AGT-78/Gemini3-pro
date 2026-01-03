@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Button } from './ui/button'
-import { Menu, X, Zap } from 'lucide-react'
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "./ui/button";
+import { Menu, X, Zap } from "lucide-react";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const location = useLocation()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Case Studies', path: '/case-studies' },
-    { name: 'Contact', path: '/contact' },
-  ]
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Case Studies", path: "/case-studies" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' : 'bg-transparent'
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent border-b border-white/10"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,14 +51,22 @@ const Navbar = () => {
                 to={link.path}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   location.pathname === link.path
-                    ? 'text-primary'
-                    : 'text-white/90 hover:text-white'
+                    ? "text-primary"
+                    : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button size="default" className="ml-4">
+            <Button
+              className="
+    h-9 px-4 text-sm
+    bg-primary/35 hover:bg-primary/45
+    border border-primary/60
+    text-white/95
+    shadow-none
+  "
+            >
               Book a Free Consultation
             </Button>
           </div>
@@ -86,22 +96,21 @@ const Navbar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block text-base font-medium transition-colors duration-200 ${
                   location.pathname === link.path
-                    ? 'text-primary'
-                    : 'text-white/90 hover:text-white'
+                    ? "text-primary"
+                    : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button size="lg" className="w-full">
+            <Button size="lg" className="group text-lg px-10 h-14">
               Book a Free Consultation
             </Button>
           </div>
         </div>
       )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
-
+export default Navbar;
